@@ -1,0 +1,48 @@
+function calculateNetSalary(basicSalary, benefits) {
+    const KRA_PAYERATE = 0.3;  
+    const NHIF_MAX = 1700;      
+    const NSSF_EMPLOYEE_RATE = 0.06;  
+    const NSSF_EMPLOYER_RATE = 0.06;  
+    const grossSalary = basicSalary + benefits;
+    const taxableIncome = grossSalary * 12; 
+    let paye = 0;
+    if (taxableIncome <= 288000) {
+        paye = ((taxableIncome * 0.1)/12 );
+    } else if (taxableIncome <= 388000) {
+        paye =( ((taxableIncome - 288000) * 0.25)/12) ; 
+    } else if (taxableIncome <= 6000000) {
+        paye = (((taxableIncome - 388000) * 0.15)/12);  
+    } else if (taxableIncome <= 9600000) {
+        paye =  ((taxableIncome - 576000) * 0.2)/12);  
+    } else {
+        paye = (( (taxableIncome - 768000) * 0.25)/12);  
+    }
+    const nhifDeductions = Math.min(NHIF_MAX, 0.015 * grossSalary);
+    const nssfEmployee = grossSalary * NSSF_EMPLOYEE_RATE;
+    const nssfEmployer = grossSalary * NSSF_EMPLOYER_RATE;
+    const netSalary = grossSalary - paye - nhifDeductions - nssfEmployee;
+    const results = {
+        grossSalary: grossSalary,
+        paye: paye,
+        nhifDeductions: nhifDeductions,
+        nssfEmployee: nssfEmployee,
+        nssfEmployer: nssfEmployer,
+        netSalary: netSalary
+    };
+
+    return results;
+}
+const basicSalary = "";   
+const benefits = "";      
+
+const salaryDetails = calculateNetSalary(basicSalary, benefits);
+
+console.log("Salary Details:");
+console.log("Basic Salary:", basicSalary);
+console.log("Benefits:", benefits);
+console.log("Gross Salary:", salaryDetails.grossSalary);
+console.log("PAYE (Income Tax):", salaryDetails.paye);
+console.log("NHIF Deductions:", salaryDetails.nhifDeductions);
+console.log("NSSF Deductions (Employee):", salaryDetails.nssfEmployee);
+console.log("NSSF Deductions (Employer):", salaryDetails.nssfEmployer);
+console.log("Net Salary:", salaryDetails.netSalary);
