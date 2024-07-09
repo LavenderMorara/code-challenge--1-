@@ -1,0 +1,13 @@
+function speedDetector (){
+    if(70>speed){
+        return "Okay";
+    }else if(130>speed>70){
+        for(let speed = "", 130>speed>70, speed+5){
+            console.log(speed)
+            }for(let points = "", 12>=points>=2, points+2){
+                speed+5 = points+2
+            }
+        }else(speed>130){
+            return "License suspended" 
+        }
+}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1> Student grade generator </h1>
+<p> Input your marks then click the button </p>
+<input id = "marks" value = " "/>
+<button onclick = "marks()">ENTER</button>
+<script>
+function marks(){
+    let marks = document.getElementById("marks").value;
+    if(marks>79){
+    grade = "A";
+    } else if(79>marks>60){
+        grade = "B";
+     }else if(60>marks>49){
+        grade = "C";
+        }else if(49>marks>40){
+            grade = "D"
+                    }else{grade = "E"}
+}
+</script>
+</body>
+
+
